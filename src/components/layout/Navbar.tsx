@@ -50,7 +50,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
           scrolled
             ? 'bg-white shadow-md border-b border-gray-200/80 px-6 py-3'
-            : 'px-4 md:px-8 py-4 bg-transparent'
+            : 'bg-white shadow-md border-b border-gray-200/80 px-6 py-3 md:bg-transparent md:shadow-none md:border-transparent md:px-8 md:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -142,11 +142,7 @@ export function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
-            className={`md:hidden w-10 h-10 border rounded-full flex items-center justify-center shadow-sm transition-all duration-300 ${
-              scrolled
-                ? 'bg-white border-gray-200 text-dark hover:bg-gray-50'
-                : 'bg-black/80 border-white/10 text-white'
-            }`}
+            className="md:hidden w-10 h-10 border border-gray-200 bg-white text-dark rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50 transition-all duration-300"
           >
             <Icon icon="mdi:menu" className="text-2xl" />
           </button>
