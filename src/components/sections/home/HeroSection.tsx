@@ -42,7 +42,7 @@ export function HeroSection() {
       <div className="md:hidden flex-1 flex flex-col relative">
 
         {/* Hero image — full bleed, fades at bottom */}
-        <div className="relative w-full h-[55vmax] max-h-[70vh] overflow-hidden pt-16">
+        <div className="relative w-full h-[55vmax] max-h-[70vh] overflow-hidden pt-10">
           <img
             src="/images/hero-tecnico.png"
             alt="Técnico MachTec"
