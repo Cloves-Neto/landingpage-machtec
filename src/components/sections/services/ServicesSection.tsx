@@ -24,7 +24,7 @@ const services: Service[] = [
     title: 'Manutenção Corretiva',
     description: 'Consertos rápidos e precisos para fazer seu aparelho voltar a funcionar no mesmo dia com garantia.',
     icon: 'mdi:wrench',
-    image: '/images/service-3.jpeg',
+    image: '/images/service-1.jpeg',
     tag: 'Mais Procurado',
     chips: ['⭐ 5.0', 'Garantia 90d', 'Rápido'],
   },
@@ -32,7 +32,7 @@ const services: Service[] = [
     title: 'Reparo de Placas',
     description: 'Recuperação de módulos eletrônicos e painéis, evitando a troca completa de peças caras.',
     icon: 'mdi:cpu-64-bit',
-    image: '/images/service-1.jpeg',
+    image: '/images/service-3.jpeg',
     tag: 'Eletrônica',
     chips: ['⭐ 4.9', 'Original', 'Laboratório'],
   },
@@ -48,17 +48,9 @@ const services: Service[] = [
     title: 'Instalação Padrão',
     description: 'Instalação profissional seguindo rigorosamente os manuais e normas das fabricantes.',
     icon: 'mdi:power-plug',
-    image: '/images/service_instalacao.png',
+    image: '/images/service-instalacao.jpeg',
     tag: 'Padrão Fábrica',
     chips: ['⭐ 5.0', 'Norma ABNT', 'Seguro'],
-  },
-  {
-    title: 'Peças Originais',
-    description: 'Trabalhamos exclusivamente com componentes genuínos para garantir performance e durabilidade.',
-    icon: 'mdi:package-variant-closed-check',
-    image: '/images/service_pecas.png',
-    tag: 'Garantia',
-    chips: ['⭐ 5.0', 'Genuínas', 'Estoque'],
   },
 ];
 
@@ -187,7 +179,7 @@ export function ServicesSection() {
                             {/* Title + Tag Row */}
                             <div className="flex items-center justify-between gap-4">
                               <h3 className="text-xl font-bold tracking-tight text-dark leading-snug">{service.title}</h3>
-                              <span className="shrink-0 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold text-primary">
+                              <span className="shrink-0 px-3 py-1 bg-sky-50 border border-sky-200 rounded-full text-xs font-bold text-sky-600">
                                 {service.tag}
                               </span>
                             </div>
@@ -209,7 +201,7 @@ export function ServicesSection() {
                             href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3.5 bg-dark hover:bg-primary text-white font-bold text-center rounded-full hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-5"
+                            className="w-full py-3.5 bg-dark hover:bg-sky-500 text-white font-bold text-center rounded-full hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-5"
                           >
                             Solicitar agora
                             <Icon icon="mdi:arrow-right" className="text-base" />
@@ -227,7 +219,7 @@ export function ServicesSection() {
           <div className="flex justify-center items-center gap-6 mt-8">
             <button
               onClick={() => { prev(); setIsPlaying(false); }}
-              className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 hover:text-primary hover:border-primary transition-all shadow-md active:scale-95"
+              className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 hover:text-sky-500 hover:border-sky-500 transition-all shadow-md active:scale-95"
             >
               <Icon icon="mdi:chevron-left" className="text-2xl" />
             </button>
@@ -237,7 +229,7 @@ export function ServicesSection() {
                 <button
                   key={idx}
                   onClick={() => { setActiveIndex(idx); setIsPlaying(false); }}
-                  className={`transition-all duration-300 rounded-full ${idx === activeIndex ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-gray-200 hover:bg-gray-300'
+                  className={`transition-all duration-300 rounded-full ${idx === activeIndex ? 'w-8 h-2.5 bg-sky-500' : 'w-2.5 h-2.5 bg-gray-200 hover:bg-gray-300'
                     }`}
                   aria-label={`Serviço ${idx + 1}`}
                 />
@@ -246,7 +238,7 @@ export function ServicesSection() {
 
             <button
               onClick={() => { next(); setIsPlaying(false); }}
-              className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 hover:text-primary hover:border-primary transition-all shadow-md active:scale-95"
+              className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 hover:text-sky-500 hover:border-sky-500 transition-all shadow-md active:scale-95"
             >
               <Icon icon="mdi:chevron-right" className="text-2xl" />
             </button>
@@ -283,7 +275,7 @@ export function ServicesSection() {
                           <h3 className="text-xl font-bold tracking-tight text-dark leading-snug">
                             {service.title}
                           </h3>
-                          <span className="shrink-0 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold text-primary">
+                          <span className="shrink-0 px-3 py-1 bg-sky-50 border border-sky-200 rounded-full text-xs font-bold text-sky-600">
                             {service.tag}
                           </span>
                         </div>
@@ -304,7 +296,7 @@ export function ServicesSection() {
                         href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3.5 bg-dark hover:bg-primary text-white font-bold text-center rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-5"
+                        className="w-full py-3.5 bg-dark hover:bg-sky-500 text-white font-bold text-center rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-5"
                       >
                         Solicitar agora
                         <Icon icon="mdi:arrow-right" className="text-base" />
@@ -319,7 +311,7 @@ export function ServicesSection() {
           <div className="flex justify-center items-center gap-6 mt-6">
             <button
               onClick={() => setMobileIndex((p) => (p - 1 + total) % total)}
-              className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:text-primary hover:border-primary transition-all shadow-md active:scale-95"
+              className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:text-sky-500 hover:border-sky-500 transition-all shadow-md active:scale-95"
             >
               <Icon icon="mdi:chevron-left" className="text-3xl" />
             </button>
@@ -328,14 +320,14 @@ export function ServicesSection() {
                 <button
                   key={idx}
                   onClick={() => setMobileIndex(idx)}
-                  className={`transition-all duration-300 rounded-full ${idx === mobileIndex ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-gray-200'}`}
+                  className={`transition-all duration-300 rounded-full ${idx === mobileIndex ? 'w-8 h-2.5 bg-sky-500' : 'w-2.5 h-2.5 bg-gray-200'}`}
                   aria-label={`Ir para o serviço ${idx + 1}`}
                 />
               ))}
             </div>
             <button
               onClick={() => setMobileIndex((p) => (p + 1) % total)}
-              className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:text-primary hover:border-primary transition-all shadow-md active:scale-95"
+              className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dark hover:text-sky-500 hover:border-sky-500 transition-all shadow-md active:scale-95"
             >
               <Icon icon="mdi:chevron-right" className="text-3xl" />
             </button>

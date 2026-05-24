@@ -153,7 +153,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-sm font-semibold text-gray-300 mb-5"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Técnico Mariner · Assistência MachTec
+              Técnico Mariner · Assistência Machtec
             </motion.div>
 
             <motion.h1
@@ -162,8 +162,8 @@ export function HeroSection() {
               transition={{ delay: 0.1 }}
               className="text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6"
             >
-              Assistência Técnica <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Especializada MachTec</span>
+              Assistência <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Especializada</span>
             </motion.h1>
 
             <motion.p

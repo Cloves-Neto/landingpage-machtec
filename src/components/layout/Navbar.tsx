@@ -80,7 +80,7 @@ export function Navbar() {
                   href={item.href}
                   className={`flex items-center gap-1 px-4 py-1.5 rounded-full transition-all text-base font-semibold ${
                     scrolled
-                      ? 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                      ? 'text-gray-700 hover:bg-gray-100 hover:text-secondary'
                       : 'text-gray-300 hover:bg-white/10 hover:text-white'
                   }`}
                 >
@@ -114,11 +114,11 @@ export function Navbar() {
                           href={sub.href}
                           className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold transition-colors ${
                             scrolled
-                              ? 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                              ? 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
                               : 'text-gray-300 hover:bg-white/10 hover:text-white'
                           }`}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
                           {sub.label}
                         </a>
                       ))}
@@ -131,8 +131,8 @@ export function Navbar() {
               href="#contact"
               className={`px-5 py-1.5 rounded-full transition-all text-base font-semibold ml-1 ${
                 scrolled
-                  ? 'bg-primary text-white hover:bg-primary/90 shadow-sm'
-                  : 'bg-dark text-white hover:bg-primary'
+                  ? 'bg-secondary text-white hover:bg-secondary/90 shadow-sm'
+                  : 'bg-dark text-white hover:bg-secondary'
               }`}
             >
               Orçamento
@@ -189,7 +189,7 @@ export function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center gap-3 px-4 py-3.5 rounded-2xl text-gray-300 font-semibold hover:bg-white/5 hover:text-white transition-colors text-base"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
                     {item.dropdown ? item.dropdown[0].label : item.label}
                   </a>
                 ))}
