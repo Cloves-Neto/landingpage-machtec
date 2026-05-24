@@ -37,14 +37,6 @@ const services: Service[] = [
     chips: ['⭐ 4.9', 'Original', 'Laboratório'],
   },
   {
-    title: 'Manutenção Preventiva',
-    description: 'Limpeza e revisão completa para aumentar a vida útil e prevenir falhas no seu eletrodoméstico.',
-    icon: 'mdi:shield-refresh',
-    image: '/images/service_preventiva.png',
-    tag: 'Prevenção',
-    chips: ['⭐ 5.0', 'Limpeza', 'Segurança'],
-  },
-  {
     title: 'Instalação Padrão',
     description: 'Instalação profissional seguindo rigorosamente os manuais e normas das fabricantes.',
     icon: 'mdi:power-plug',
@@ -56,7 +48,7 @@ const services: Service[] = [
 
 const CARD_WIDTH = 400;
 const CARD_HEIGHT = 540;
-const RADIUS = 560;
+const RADIUS = 480;
 
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -161,7 +153,7 @@ export function ServicesSection() {
                           }`}
                       >
                         {/* Image Area — full bleed, rounded at top via parent overflow-hidden */}
-                        <div className="relative h-[48%] w-full shrink-0 overflow-hidden">
+                        <div className="relative h-[56%] w-full shrink-0 overflow-hidden">
                           <img
                             src={service.image}
                             alt={service.title}
@@ -256,7 +248,7 @@ export function ServicesSection() {
                 <div key={idx} className="w-full shrink-0 px-4">
                   <div className="rounded-[2.5rem] flex flex-col bg-white border border-gray-100 shadow-2xl overflow-hidden text-dark">
                     {/* Image — full bleed */}
-                    <div className="relative h-48 w-full shrink-0 overflow-hidden">
+                    <div className="relative h-60 w-full shrink-0 overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
