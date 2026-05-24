@@ -7,19 +7,19 @@ const services = [
     title: 'Diagnóstico Técnico',
     description: 'Identificação precisa de problemas com ferramentas profissionais para evitar gastos desnecessários.',
     icon: 'mdi:tools',
-    image: '/images/service_diagnostico.png',
+    image: '/images/service-2.jpeg',
   },
   {
     title: 'Manutenção Corretiva',
     description: 'Consertos rápidos e precisos para fazer seu aparelho voltar a funcionar no mesmo dia.',
     icon: 'mdi:wrench',
-    image: '/images/service_manutencao.png',
+    image: '/images/service-3.jpeg',
   },
   {
     title: 'Reparo de Placas',
     description: 'Recuperação de módulos eletrônicos e painéis, evitando a troca completa de peças caras.',
     icon: 'mdi:cpu-64-bit',
-    image: '/images/service_placas.png',
+    image: '/images/service-1.jpeg',
   },
   {
     title: 'Manutenção Preventiva',
@@ -144,11 +144,10 @@ export function ServicesSection() {
                       }}
                     >
                       <div
-                        className={`w-full h-full rounded-3xl overflow-hidden border flex flex-col shadow-xl transition-shadow duration-300 ${
-                          isActive
-                            ? 'border-gray-200 shadow-2xl shadow-gray-300/50'
-                            : 'border-gray-100 shadow-lg'
-                        }`}
+                        className={`w-full h-full rounded-3xl overflow-hidden border flex flex-col shadow-xl transition-shadow duration-300 ${isActive
+                          ? 'border-gray-200 shadow-2xl shadow-gray-300/50'
+                          : 'border-gray-100 shadow-lg'
+                          }`}
                       >
                         {/* Image Area */}
                         <div className="relative h-[55%] shrink-0 overflow-hidden">
@@ -195,9 +194,8 @@ export function ServicesSection() {
                 <button
                   key={idx}
                   onClick={() => { setActiveIndex(idx); setIsPlaying(false); }}
-                  className={`transition-all duration-300 rounded-full ${
-                    idx === activeIndex ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-gray-200 hover:bg-gray-300'
-                  }`}
+                  className={`transition-all duration-300 rounded-full ${idx === activeIndex ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-gray-200 hover:bg-gray-300'
+                    }`}
                   aria-label={`Serviço ${idx + 1}`}
                 />
               ))}

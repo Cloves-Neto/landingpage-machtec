@@ -19,7 +19,7 @@ export function HeroSection() {
     if (!el) return;
     const measure = () => {
       const rect = el.getBoundingClientRect();
-      const w = Math.round(rect.width  || el.offsetWidth);
+      const w = Math.round(rect.width || el.offsetWidth);
       const h = Math.round(rect.height || el.offsetHeight);
       if (w > 0) setRingSize({ w, h });
     };
@@ -77,7 +77,7 @@ export function HeroSection() {
             className="absolute top-20 right-4 w-16 h-16 rounded-2xl bg-primary flex flex-col items-center justify-center shadow-xl shadow-primary/40"
           >
             <span className="text-white font-black text-xl leading-none">21</span>
-            <span className="text-white/80 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">anos<br/>de exp.</span>
+            <span className="text-white/80 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">anos<br />de exp.</span>
           </motion.div>
         </div>
 
@@ -91,10 +91,10 @@ export function HeroSection() {
             transition={{ delay: 0.2 }}
             className="text-[2.4rem] font-black text-white leading-[1.05] tracking-tight mb-3"
           >
-            Assistência Técnica{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Rápida e Garantida.
-            </span>
+
+            Assistência
+            <br />
+            Especializada
           </motion.h1>
 
           {/* Sub */}
@@ -214,13 +214,13 @@ export function HeroSection() {
               <SaturnRingText
                 width={ringSize.w}
                 height={ringSize.h}
-                radius={Math.min(ringSize.w, ringSize.h) * 0.44}
+                radius={Math.min(ringSize.w, ringSize.h) * 0.52}
               />
             )}
             <img
               src="/images/hero-tecnico.png"
               alt="Técnico Especializado"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[98%] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)] z-10 pointer-events-none"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 h-[100%] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)] z-10 pointer-events-none"
             />
           </motion.div>
         </div>

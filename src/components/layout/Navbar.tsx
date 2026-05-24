@@ -175,10 +175,7 @@ export function Navbar() {
               className="fixed top-0 right-0 h-full w-[80vw] max-w-sm z-[120] bg-dark shadow-2xl flex flex-col md:hidden"
             >
               {/* Header do Drawer */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-                <div className="bg-white rounded-md px-3 py-1 flex items-center justify-center">
-                  <span className="text-2xl font-black tracking-tighter text-primary">MACHTEC</span>
-                </div>
+              <div className="flex items-center justify-end px-6 py-5 border-b border-white/10">
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
