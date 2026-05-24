@@ -177,7 +177,7 @@ export function ContactFormSection() {
       </div>
 
       {/* Form */}
-      <div className="max-w-3xl mx-auto px-6 md:px-12">
+      <div className="max-w-5xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,75 +187,77 @@ export function ContactFormSection() {
         >
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-            {/* Nome + Telefone */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Informações Pessoais */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <Field label="Nome completo" icon="mdi:account">
                 <input type="text" placeholder="Seu nome" value={form.nome} onChange={set('nome')} required className={inputCls} />
               </Field>
               <Field label="Telefone / WhatsApp" icon="mdi:phone">
                 <input type="tel" placeholder="(11) 99999-9999" value={form.telefone} onChange={set('telefone')} required className={inputCls} />
               </Field>
+              <Field label="E-mail" icon="mdi:email">
+                <input type="email" placeholder="seu@email.com" value={form.email} onChange={set('email')} className={inputCls} />
+              </Field>
             </div>
 
-            {/* Email */}
-            <Field label="E-mail" icon="mdi:email">
-              <input type="email" placeholder="seu@email.com" value={form.email} onChange={set('email')} className={inputCls} />
-            </Field>
-
             {/* ─── Endereço ──────────────────────────────────────────── */}
-            <div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+            <div className="flex flex-col gap-4">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
                 <Icon icon="mdi:map-marker" className="text-primary" />
                 Endereço do atendimento
               </p>
 
-              {/* CEP */}
-              <div className="mb-4">
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">CEP</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    placeholder="00000-000"
-                    value={form.cep}
-                    onChange={handleCepChange}
-                    onBlur={handleCepBlur}
-                    maxLength={9}
-                    className={`${inputCls} pr-10`}
-                  />
-                  {cepLoading && (
-                    <Icon
-                      icon="mdi:loading"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-primary text-xl animate-spin"
+              <div className="grid grid-cols-12 gap-4 md:gap-5">
+                {/* CEP */}
+                <div className="col-span-12 md:col-span-3">
+                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">CEP</label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="00000-000"
+                      value={form.cep}
+                      onChange={handleCepChange}
+                      onBlur={handleCepBlur}
+                      maxLength={9}
+                      className={`${inputCls} pr-10`}
                     />
-                  )}
+                    {cepLoading && (
+                      <Icon
+                        icon="mdi:loading"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-primary text-xl animate-spin"
+                      />
+                    )}
+                  </div>
+                  {cepError && <p className="text-xs text-red-500 mt-1">{cepError}</p>}
                 </div>
-                {cepError && <p className="text-xs text-red-500 mt-1">{cepError}</p>}
-              </div>
 
-              {/* Rua + Número */}
-              <div className="grid grid-cols-3 gap-3 mb-3">
-                <div className="col-span-2">
+                {/* Rua */}
+                <div className="col-span-8 md:col-span-7">
                   <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Rua / Logradouro</label>
                   <input type="text" placeholder="Rua das Flores" value={form.rua} onChange={set('rua')} className={inputCls} />
                 </div>
-                <div>
+
+                {/* Número */}
+                <div className="col-span-4 md:col-span-2">
                   <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Número</label>
                   <input type="text" placeholder="123" value={form.numero} onChange={set('numero')} className={inputCls} />
                 </div>
-              </div>
 
-              {/* Bairro + Cidade + UF */}
-              <div className="grid grid-cols-5 gap-3">
-                <div className="col-span-2">
+                {/* Bairro */}
+                <div className="col-span-12 md:col-span-5">
                   <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Bairro</label>
                   <input type="text" placeholder="Centro" value={form.bairro} onChange={set('bairro')} className={inputCls} />
                 </div>
-                <div className="col-span-2">
+
+                {/* Cidade */}
+                <div className="col-span-8 md:col-span-5">
                   <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Cidade</label>
                   <input type="text" placeholder="São Paulo" value={form.cidade} onChange={set('cidade')} className={inputCls} />
                 </div>
-                <div>
+
+                {/* UF */}
+                <div className="col-span-4 md:col-span-2">
                   <label className="text-sm font-semibold text-gray-700 mb-1.5 block">UF</label>
                   <input type="text" placeholder="SP" value={form.uf} onChange={set('uf')} maxLength={2} className={`${inputCls} uppercase`} />
                 </div>
