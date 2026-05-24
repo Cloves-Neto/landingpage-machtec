@@ -30,7 +30,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-dark overflow-hidden flex flex-col">
+    <section className="relative min-h-screen bg-dark overflow-hidden flex flex-col pt-20 md:pt-0">
 
       {/* Background Glows */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
