@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Icon } from '@iconify/react';
 
@@ -28,25 +28,55 @@ const navItems: { label: string; href: string; dropdown?: DropdownItem[] }[] = [
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-0 left-0 w-full z-[100] px-4 md:px-8 py-4"
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+          scrolled
+            ? 'bg-white shadow-md border-b border-gray-200/80 px-6 py-3'
+            : 'px-4 md:px-8 py-4 bg-transparent'
+        }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
           {/* Logo Pill */}
-          <a href="#" className="flex items-center justify-center gap-2 bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 rounded-full px-4 py-1.5">
-            <div className="bg-white rounded-md px-3 py-1 flex items-center justify-center">
+          <a
+            href="#"
+            className={`flex items-center justify-center gap-2 transition-all duration-300 rounded-full ${
+              scrolled
+                ? 'bg-transparent border-transparent shadow-none px-0 py-0'
+                : 'bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 px-4 py-1.5'
+            }`}
+          >
+            <div className={`rounded-md px-3 py-1 flex items-center justify-center transition-all duration-300 ${
+              scrolled ? 'bg-white border border-gray-200 shadow-sm' : 'bg-white'
+            }`}>
               <span className="text-2xl font-black tracking-tighter text-primary">MACHTEC</span>
             </div>
           </a>
 
           {/* Nav Links Pill — Desktop */}
-          <nav className="hidden md:flex items-center gap-1 bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 rounded-full px-2 py-2">
+          <nav className={`hidden md:flex items-center gap-1 transition-all duration-300 rounded-full px-2 py-2 ${
+            scrolled
+              ? 'bg-transparent border-transparent shadow-none'
+              : 'bg-black/80 backdrop-blur-lg shadow-lg border border-white/10'
+          }`}>
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -56,13 +86,19 @@ export function Navbar() {
               >
                 <a
                   href={item.href}
-                  className="flex items-center gap-1 px-4 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all text-base font-semibold text-gray-300"
+                  className={`flex items-center gap-1 px-4 py-1.5 rounded-full transition-all text-base font-semibold ${
+                    scrolled
+                      ? 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                  }`}
                 >
                   {item.label}
                   {item.dropdown && (
                     <Icon
                       icon="mdi:chevron-down"
-                      className="text-base text-gray-400 transition-transform duration-200"
+                      className={`text-base transition-transform duration-200 ${
+                        scrolled ? 'text-gray-500' : 'text-gray-400'
+                      }`}
                       style={{ transform: activeDropdown === item.label ? 'rotate(180deg)' : 'rotate(0deg)' }}
                     />
                   )}
@@ -74,13 +110,21 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.97 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-2 bg-black/90 backdrop-blur-lg border border-white/10 rounded-2xl shadow-xl overflow-hidden min-w-[240px] z-50"
+                      className={`absolute top-full left-0 mt-2 border rounded-2xl shadow-xl overflow-hidden min-w-[240px] z-50 ${
+                        scrolled
+                          ? 'bg-white border-gray-200 text-gray-700'
+                          : 'bg-black/90 backdrop-blur-lg border-white/10 text-gray-300'
+                      }`}
                     >
                       {item.dropdown.map((sub) => (
                         <a
                           key={sub.label}
                           href={sub.href}
-                          className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+                          className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold transition-colors ${
+                            scrolled
+                              ? 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                              : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                          }`}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
                           {sub.label}
@@ -91,7 +135,14 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
             ))}
-            <a href="#contact" className="px-5 py-1.5 rounded-full bg-dark text-white hover:bg-primary transition-all text-base font-semibold ml-1">
+            <a
+              href="#contact"
+              className={`px-5 py-1.5 rounded-full transition-all text-base font-semibold ml-1 ${
+                scrolled
+                  ? 'bg-primary text-white hover:bg-primary/90 shadow-sm'
+                  : 'bg-dark text-white hover:bg-primary'
+              }`}
+            >
               Orçamento
             </a>
           </nav>
@@ -99,7 +150,11 @@ export function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden w-10 h-10 bg-black/80 backdrop-blur-lg border border-white/10 rounded-full flex items-center justify-center shadow-sm text-white"
+            className={`md:hidden w-10 h-10 border rounded-full flex items-center justify-center shadow-sm transition-all duration-300 ${
+              scrolled
+                ? 'bg-white border-gray-200 text-dark hover:bg-gray-50'
+                : 'bg-black/80 border-white/10 text-white'
+            }`}
           >
             <Icon icon="mdi:menu" className="text-2xl" />
           </button>
