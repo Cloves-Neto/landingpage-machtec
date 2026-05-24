@@ -9,19 +9,19 @@ const serviceDetails = {
     title: 'Geladeiras & Freezers',
     description: 'Manutenção completa em refrigeração. Desde troca de compressores, recarga de gás até reparo de placas eletrônicas e termostatos.',
     features: ['Troca de Borrachas', 'Recarga de Gás', 'Reparo de Motor', 'Limpeza de Sistema'],
-    image: '/src/assets/service-fridge.png',
+    image: '/images/geladeira-freezer.jpeg',
   },
   lavadoras: {
     title: 'Lavadoras & Secadoras',
     description: 'Consertos rápidos para que sua lavanderia não pare. Trabalhamos com modelos Lava e Seca, abertura frontal e superior.',
     features: ['Troca de Rolamentos', 'Limpeza de Tambor', 'Reparo de Placa', 'Desobstrução'],
-    image: '/src/assets/service-washer.png',
+    image: '/images/lava-e-seca.jpeg',
   },
   microondas: {
     title: 'Micro-ondas',
     description: 'Assistência técnica especializada em micro-ondas industriais e residenciais, garantindo aquecimento rápido e seguro.',
     features: ['Troca de Magnetron', 'Reparo de Teclado', 'Substituição de Fusível', 'Manutenção de Trafo'],
-    image: '/src/assets/service-microwave.png',
+    image: '/images/microondas.jpeg',
   },
 };
 
@@ -42,9 +42,9 @@ export function ApplianceTabsSection() {
   return (
     <section id="solucoes" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        
+
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -57,7 +57,7 @@ export function ApplianceTabsSection() {
 
         {/* Grid Flexbox sem o card wrapper */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 lg:h-[550px]">
-          
+
           {/* Menu Lateral - Row no mobile, Col no desktop */}
           <div className="lg:w-1/3 flex flex-row lg:flex-col gap-4 lg:h-full justify-between lg:justify-start">
             {(Object.keys(serviceDetails) as ServiceType[]).map((key) => {
@@ -66,20 +66,19 @@ export function ApplianceTabsSection() {
                 <button
                   key={key}
                   onClick={() => setActiveTab(key)}
-                  className={`flex-1 flex flex-col items-center lg:items-start justify-center p-4 lg:p-6 rounded-2xl lg:rounded-[1.5rem] transition-all duration-300 relative overflow-hidden border ${
-                    isActive 
-                      ? 'bg-gray-50 border-sky-300 shadow-lg shadow-sky-100 scale-105 lg:scale-100 z-10' 
-                      : 'bg-white border-gray-200 shadow-sm hover:bg-gray-50'
-                  }`}
+                  className={`flex-1 flex flex-col items-center lg:items-start justify-center p-4 lg:p-6 rounded-2xl lg:rounded-[1.5rem] transition-all duration-300 relative overflow-hidden border ${isActive
+                    ? 'bg-gray-50 border-sky-300 shadow-lg shadow-sky-100 scale-105 lg:scale-100 z-10'
+                    : 'bg-white border-gray-200 shadow-sm hover:bg-gray-50'
+                    }`}
                 >
                   <div className="flex items-center gap-0 lg:gap-4 lg:mb-1">
                     <div className={`w-14 h-14 lg:w-12 lg:h-12 rounded-2xl lg:rounded-xl flex items-center justify-center transition-colors ${isActive ? 'bg-sky-500 text-white shadow-md shadow-sky-500/30' : 'bg-gray-100 text-gray-500'}`}>
-                      <Icon 
+                      <Icon
                         icon={
                           key === 'geladeiras' ? 'mdi:fridge-outline' :
-                          key === 'lavadoras' ? 'mdi:washing-machine' : 'mdi:microwave'
-                        } 
-                        className="text-3xl lg:text-2xl" 
+                            key === 'lavadoras' ? 'mdi:washing-machine' : 'mdi:microwave'
+                        }
+                        className="text-3xl lg:text-2xl"
                       />
                     </div>
                     <h3 className={`hidden lg:block text-xl font-bold ${isActive ? 'text-dark' : 'text-gray-500'}`}>
@@ -87,7 +86,7 @@ export function ApplianceTabsSection() {
                     </h3>
                   </div>
                   {isActive && (
-                    <motion.p 
+                    <motion.p
                       layoutId="tab-desc"
                       className="hidden lg:block text-gray-500 text-sm mt-2 ml-16"
                     >
@@ -110,16 +109,16 @@ export function ApplianceTabsSection() {
                 transition={{ duration: 0.4 }}
                 className="absolute inset-0 w-full h-full"
               >
-                <img 
-                  src={serviceDetails[activeTab].image} 
+                <img
+                  src={serviceDetails[activeTab].image}
                   alt={serviceDetails[activeTab].title}
                   className="w-full h-full object-cover object-center opacity-70 group-hover:opacity-90 transition-opacity duration-700 mix-blend-overlay"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-transparent"></div>
-                
+
                 {/* Informações Sobrepostas */}
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                  <motion.h3 
+                  <motion.h3
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -127,8 +126,8 @@ export function ApplianceTabsSection() {
                   >
                     {serviceDetails[activeTab].title}
                   </motion.h3>
-                  
-                  <motion.p 
+
+                  <motion.p
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -136,8 +135,8 @@ export function ApplianceTabsSection() {
                   >
                     {serviceDetails[activeTab].description}
                   </motion.p>
-                  
-                  <motion.ul 
+
+                  <motion.ul
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
