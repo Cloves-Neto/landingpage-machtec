@@ -2,53 +2,73 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'motion/react';
 import { Icon } from '@iconify/react';
 
-const services = [
+interface Service {
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  tag: string;
+  chips: string[];
+}
+
+const services: Service[] = [
   {
     title: 'Diagnóstico Técnico',
     description: 'Identificação precisa de problemas com ferramentas profissionais para evitar gastos desnecessários.',
     icon: 'mdi:tools',
     image: '/images/service-2.jpeg',
+    tag: 'Orçamento',
+    chips: ['⭐ 5.0', 'Ágil', 'Preventivo'],
   },
   {
     title: 'Manutenção Corretiva',
-    description: 'Consertos rápidos e precisos para fazer seu aparelho voltar a funcionar no mesmo dia.',
+    description: 'Consertos rápidos e precisos para fazer seu aparelho voltar a funcionar no mesmo dia com garantia.',
     icon: 'mdi:wrench',
     image: '/images/service-3.jpeg',
+    tag: 'Mais Procurado',
+    chips: ['⭐ 5.0', 'Garantia 90d', 'Rápido'],
   },
   {
     title: 'Reparo de Placas',
     description: 'Recuperação de módulos eletrônicos e painéis, evitando a troca completa de peças caras.',
     icon: 'mdi:cpu-64-bit',
     image: '/images/service-1.jpeg',
+    tag: 'Eletrônica',
+    chips: ['⭐ 4.9', 'Original', 'Laboratório'],
   },
   {
     title: 'Manutenção Preventiva',
     description: 'Limpeza e revisão completa para aumentar a vida útil e prevenir falhas no seu eletrodoméstico.',
     icon: 'mdi:shield-refresh',
     image: '/images/service_preventiva.png',
+    tag: 'Prevenção',
+    chips: ['⭐ 5.0', 'Limpeza', 'Segurança'],
   },
   {
     title: 'Instalação Padrão',
     description: 'Instalação profissional seguindo rigorosamente os manuais e normas das fabricantes.',
     icon: 'mdi:power-plug',
     image: '/images/service_instalacao.png',
+    tag: 'Padrão Fábrica',
+    chips: ['⭐ 5.0', 'Norma ABNT', 'Seguro'],
   },
   {
     title: 'Peças Originais',
     description: 'Trabalhamos exclusivamente com componentes genuínos para garantir performance e durabilidade.',
     icon: 'mdi:package-variant-closed-check',
     image: '/images/service_pecas.png',
+    tag: 'Garantia',
+    chips: ['⭐ 5.0', 'Genuínas', 'Estoque'],
   },
 ];
 
-const CARD_WIDTH = 420;
-const CARD_HEIGHT = 500;
+const CARD_WIDTH = 400;
+const CARD_HEIGHT = 540;
 const RADIUS = 560;
 
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  // Mobile carousel
   const [mobileIndex, setMobileIndex] = useState(0);
 
   const total = services.length;
@@ -62,10 +82,9 @@ export function ServicesSection() {
     setActiveIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
-  // Auto-rotate
   useEffect(() => {
     if (!isPlaying) return;
-    const interval = setInterval(next, 3000);
+    const interval = setInterval(next, 3500);
     return () => clearInterval(interval);
   }, [isPlaying, next]);
 
@@ -144,33 +163,59 @@ export function ServicesSection() {
                       }}
                     >
                       <div
-                        className={`w-full h-full rounded-3xl overflow-hidden border flex flex-col shadow-xl transition-shadow duration-300 ${isActive
-                          ? 'border-gray-200 shadow-2xl shadow-gray-300/50'
-                          : 'border-gray-100 shadow-lg'
+                        className={`w-full h-full rounded-[2.5rem] p-5 flex flex-col shadow-2xl transition-all duration-300 bg-gradient-to-b from-[#0F2244] to-[#0A192F] text-white border border-white/10 ${isActive
+                          ? 'shadow-2xl shadow-primary/20 scale-100 border-white/20'
+                          : 'opacity-70 scale-95 border-white/5'
                           }`}
                       >
                         {/* Image Area */}
-                        <div className="relative h-[55%] shrink-0 overflow-hidden">
+                        <div className="relative h-[48%] rounded-[2rem] overflow-hidden shrink-0">
                           <img
                             src={service.image}
                             alt={service.title}
                             className="w-full h-full object-cover"
                           />
                           {/* Subtle overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
-                          {/* Icon — top left, white bg, red icon */}
-                          <div className="absolute top-3 left-3 w-9 h-9 bg-white rounded-sm flex items-center justify-center shadow-md">
-                            <Icon icon={service.icon} className="text-xl text-red-600" />
+                          <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/35" />
+                          {/* Icon — top right, glass bg, white icon */}
+                          <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-md shadow-md transition-all">
+                            <Icon icon={service.icon} className="text-xl" />
                           </div>
                         </div>
 
-                        {/* Text Area */}
-                        <div className="flex-1 bg-white px-6 py-5 flex flex-col justify-center">
-                          <h3 className="text-xl font-black mb-2 leading-snug bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{service.title}</h3>
-                          <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
-                          {isActive && (
-                            <div className="h-0.5 w-10 rounded-full bg-primary mt-3" />
-                          )}
+                        {/* Content Area */}
+                        <div className="flex-grow flex flex-col justify-between pt-5">
+                          <div>
+                            {/* Title + Tag Row */}
+                            <div className="flex items-center justify-between gap-4">
+                              <h3 className="text-xl font-bold tracking-tight text-white leading-snug">{service.title}</h3>
+                              <span className="shrink-0 px-3.5 py-1 bg-white/10 border border-white/10 rounded-full text-xs font-semibold text-white/90">
+                                {service.tag}
+                              </span>
+                            </div>
+                            {/* Description */}
+                            <p className="text-gray-300 text-sm leading-relaxed mt-3">{service.description}</p>
+                          </div>
+
+                          {/* Chips Row */}
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {service.chips.map((chip, cIdx) => (
+                              <span key={cIdx} className="px-3 py-1 bg-white/10 border border-white/5 rounded-full text-xs font-semibold text-white">
+                                {chip}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* CTA Button */}
+                          <a
+                            href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-3.5 bg-white hover:bg-gray-100 text-dark font-black text-center rounded-full hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-5"
+                          >
+                            Solicitar agora
+                            <Icon icon="mdi:arrow-right" className="text-base" />
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -219,9 +264,9 @@ export function ServicesSection() {
             >
               {services.map((service, idx) => (
                 <div key={idx} className="w-full shrink-0 px-4">
-                  <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-xl flex flex-col bg-white">
+                  <div className="rounded-[2.5rem] p-5 flex flex-col bg-gradient-to-b from-[#0F2244] to-[#0A192F] text-white border border-white/10 shadow-2xl">
                     {/* Image */}
-                    <div className="relative h-48 shrink-0 overflow-hidden">
+                    <div className="relative h-48 shrink-0 rounded-[2rem] overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
@@ -229,16 +274,44 @@ export function ServicesSection() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/35" />
                       {/* Icon */}
-                      <div className="absolute top-3 left-3 w-10 h-10 bg-white rounded-sm flex items-center justify-center shadow-md">
-                        <Icon icon={service.icon} className="text-xl text-red-600" />
+                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 border border-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-md shadow-md">
+                        <Icon icon={service.icon} className="text-xl" />
                       </div>
                     </div>
-                    {/* Text */}
-                    <div className="px-6 py-5">
-                      <h3 className="text-xl font-black mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-snug">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+                    {/* Content */}
+                    <div className="flex-grow flex flex-col justify-between pt-5">
+                      <div>
+                        {/* Title + Tag Row */}
+                        <div className="flex items-center justify-between gap-4">
+                          <h3 className="text-xl font-bold tracking-tight text-white leading-snug">
+                            {service.title}
+                          </h3>
+                          <span className="shrink-0 px-3.5 py-1 bg-white/10 border border-white/10 rounded-full text-xs font-semibold text-white/90">
+                            {service.tag}
+                          </span>
+                        </div>
+                        <p className="text-gray-300 text-sm leading-relaxed mt-3">{service.description}</p>
+                      </div>
+
+                      {/* Chips */}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {service.chips.map((chip, cIdx) => (
+                          <span key={cIdx} className="px-3 py-1 bg-white/10 border border-white/5 rounded-full text-xs font-semibold text-white">
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Button */}
+                      <a
+                        href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3.5 bg-white hover:bg-gray-100 text-dark font-black text-center rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-5"
+                      >
+                        Solicitar agora
+                        <Icon icon="mdi:arrow-right" className="text-base" />
+                      </a>
                     </div>
                   </div>
                 </div>
