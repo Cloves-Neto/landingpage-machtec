@@ -165,7 +165,7 @@ export function ServicesSection() {
                       <div
                         className={`w-full h-full rounded-[2.5rem] flex flex-col shadow-2xl transition-all duration-300 bg-white border overflow-hidden text-dark ${isActive
                           ? 'border-gray-200/80 shadow-2xl shadow-gray-300/80 scale-100'
-                          : 'opacity-70 scale-95 border-gray-100'
+                          : 'scale-95 border-gray-100'
                           }`}
                       >
                         {/* Image Area — full bleed, rounded at top via parent overflow-hidden */}
