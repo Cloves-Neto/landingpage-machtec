@@ -12,9 +12,11 @@ export function Footer() {
         <div className="flex flex-col gap-8 lg:col-span-4 pr-0 lg:pr-8">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-3xl font-black tracking-tighter text-white">
-                MACHTEC
-              </span>
+              <div className="bg-white rounded-md px-3.5 py-1.5 flex items-center justify-center">
+                <span className="text-3xl font-black tracking-tighter text-primary">
+                  MACHTEC
+                </span>
+              </div>
             </div>
             <p className="text-gray-400 max-w-sm leading-relaxed mt-2">
               Elevando o padrão da assistência técnica. Consertos definitivos para seus eletrodomésticos com rapidez, transparência e garantia.

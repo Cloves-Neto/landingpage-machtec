@@ -141,10 +141,10 @@ export function HeroSection() {
           DESKTOP LAYOUT (hidden on mobile)
       ══════════════════════════════════════════ */}
       <div className="hidden md:flex flex-1 flex-col">
-        <div className="flex-1 flex flex-row items-center max-w-8xl md:px-38 mx-auto md:px-0 pt-36 pb-8 gap-10 w-full">
+        <div className="flex-1 flex flex-row items-center max-w-7xl mx-auto px-8 md:px-16 pt-36 pb-8 gap-10 w-full">
 
           {/* Left: Text */}
-          <div className="w-1/2 relative z-10 flex flex-col items-start text-left px-12">
+          <div className="w-1/2 relative z-10 flex flex-col items-start text-left">
 
             {/* Badge */}
             <motion.div
@@ -215,10 +215,10 @@ export function HeroSection() {
         transition={{ delay: 0.2, duration: 0.8 }}
         className="hidden md:flex absolute pointer-events-none"
         style={{
-          right: '15%',
+          right: '4%',
           top: 0,
           bottom: '120px',
-          width: 'min(46vw, 560px)',
+          width: 'min(44vw, 520px)',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'flex-end',

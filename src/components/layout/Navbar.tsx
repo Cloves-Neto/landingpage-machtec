@@ -39,8 +39,10 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
           {/* Logo Pill */}
-          <a href="#" className="flex items-center justify-center gap-2 bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 rounded-full px-5 py-2">
-            <span className="text-2xl font-black tracking-tighter text-white">MACHTEC</span>
+          <a href="#" className="flex items-center justify-center gap-2 bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 rounded-full px-4 py-1.5">
+            <div className="bg-white rounded-md px-3 py-1 flex items-center justify-center">
+              <span className="text-2xl font-black tracking-tighter text-primary">MACHTEC</span>
+            </div>
           </a>
 
           {/* Nav Links Pill — Desktop */}
@@ -127,8 +129,8 @@ export function Navbar() {
             >
               {/* Header do Drawer */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl font-black tracking-tighter text-white">MACHTEC</span>
+                <div className="bg-white rounded-md px-3 py-1 flex items-center justify-center">
+                  <span className="text-2xl font-black tracking-tighter text-primary">MACHTEC</span>
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
@@ -163,8 +165,8 @@ export function Navbar() {
 
               {/* Footer do Drawer */}
               <div className="px-6 py-5 border-t border-white/10 bg-dark/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xl font-black tracking-tighter text-white">MACHTEC</span>
+                <div className="bg-white rounded-md px-2.5 py-1 inline-flex items-center justify-center mb-2">
+                  <span className="text-xl font-black tracking-tighter text-primary">MACHTEC</span>
                 </div>
                 <p className="text-xs text-gray-500 font-medium leading-relaxed">
                   Assistência técnica de excelência.<br />Sua máquina em boas mãos.
