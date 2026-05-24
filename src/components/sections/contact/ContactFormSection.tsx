@@ -69,8 +69,8 @@ function formatWhatsApp(d: FormData): string {
 function Field({ label, icon, children }: { label: string; icon: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="flex items-center gap-2 text-sm font-semibold text-gray-700">
-        <Icon icon={icon} className="text-primary text-base" />
+      <label className="flex items-center gap-2 text-sm font-semibold text-gray-200">
+        <Icon icon={icon} className="text-sky-400 text-base" />
         {label}
       </label>
       {children}
@@ -79,7 +79,7 @@ function Field({ label, icon, children }: { label: string; icon: string; childre
 }
 
 const inputCls =
-  'w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark text-sm font-medium placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all disabled:bg-gray-50 disabled:text-gray-400';
+  'w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark text-sm font-medium placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 transition-all disabled:bg-gray-50 disabled:text-gray-400';
 
 export function ContactFormSection() {
   const [form, setForm] = useState<FormData>(empty);
@@ -115,7 +115,7 @@ export function ContactFormSection() {
     } catch {
       setCepError('Erro ao buscar CEP. Verifique sua conexão.');
     } finally {
-      setCepLoading(false);
+      cepLoading && setCepLoading(false);
     }
   };
 
@@ -145,9 +145,9 @@ export function ContactFormSection() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 text-green-600 border border-green-200 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#25D366] text-white text-xs font-bold uppercase tracking-widest mb-4 shadow-md"
         >
-          <Icon icon="logos:whatsapp-icon" className="text-xs" />
+          <Icon icon="mdi:whatsapp" className="text-sm" />
           Contato via WhatsApp
         </motion.span>
 
@@ -176,15 +176,15 @@ export function ContactFormSection() {
       </div>
 
       {/* Form */}
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="bg-white rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200/60 p-8 md:p-10"
+          className="bg-dark rounded-[2.5rem] border border-white/10 shadow-2xl p-8 md:p-12 text-white"
         >
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
             {/* Informações Pessoais */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -201,15 +201,15 @@ export function ContactFormSection() {
 
             {/* ─── Endereço ──────────────────────────────────────────── */}
             <div className="flex flex-col gap-4">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                <Icon icon="mdi:map-marker" className="text-primary" />
+              <p className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                <Icon icon="mdi:map-marker" className="text-sky-400 text-sm" />
                 Endereço do atendimento
               </p>
 
               <div className="grid grid-cols-12 gap-4 md:gap-5">
                 {/* CEP */}
                 <div className="col-span-12 md:col-span-3">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">CEP</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">CEP</label>
                   <div className="relative">
                     <input
                       type="text"
@@ -224,40 +224,40 @@ export function ContactFormSection() {
                     {cepLoading && (
                       <Icon
                         icon="mdi:loading"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-primary text-xl animate-spin"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 text-xl animate-spin"
                       />
                     )}
                   </div>
-                  {cepError && <p className="text-xs text-red-500 mt-1">{cepError}</p>}
+                  {cepError && <p className="text-xs text-red-400 mt-1">{cepError}</p>}
                 </div>
 
                 {/* Rua */}
                 <div className="col-span-8 md:col-span-7">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Rua / Logradouro</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Rua / Logradouro</label>
                   <input type="text" placeholder="Rua das Flores" value={form.rua} onChange={set('rua')} className={inputCls} />
                 </div>
 
                 {/* Número */}
                 <div className="col-span-4 md:col-span-2">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Número</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Número</label>
                   <input type="text" placeholder="123" value={form.numero} onChange={set('numero')} className={inputCls} />
                 </div>
 
                 {/* Bairro */}
                 <div className="col-span-12 md:col-span-5">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Bairro</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Bairro</label>
                   <input type="text" placeholder="Centro" value={form.bairro} onChange={set('bairro')} className={inputCls} />
                 </div>
 
                 {/* Cidade */}
                 <div className="col-span-8 md:col-span-5">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Cidade</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Cidade</label>
                   <input type="text" placeholder="São Paulo" value={form.cidade} onChange={set('cidade')} className={inputCls} />
                 </div>
 
                 {/* UF */}
                 <div className="col-span-4 md:col-span-2">
-                  <label className="text-sm font-semibold text-gray-700 mb-1.5 block">UF</label>
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">UF</label>
                   <input type="text" placeholder="SP" value={form.uf} onChange={set('uf')} maxLength={2} className={`${inputCls} uppercase`} />
                 </div>
               </div>
@@ -296,7 +296,7 @@ export function ContactFormSection() {
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
-                className="rounded-2xl bg-gray-50 border border-gray-200 p-4 text-xs text-gray-500 font-mono leading-relaxed overflow-hidden"
+                className="rounded-2xl bg-white/5 border border-white/10 p-4 text-xs text-gray-300 font-mono leading-relaxed overflow-hidden"
               >
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
                   <Icon icon="mdi:eye" /> Pré-visualização da mensagem
@@ -329,7 +329,7 @@ export function ContactFormSection() {
               {sent ? (
                 <><Icon icon="mdi:check-circle" className="text-2xl" /> WhatsApp aberto!</>
               ) : (
-                <><Icon icon="logos:whatsapp-icon" className="text-2xl" /> Enviar pelo WhatsApp</>
+                <><Icon icon="mdi:whatsapp" className="text-2xl" /> Enviar pelo WhatsApp</>
               )}
             </button>
 

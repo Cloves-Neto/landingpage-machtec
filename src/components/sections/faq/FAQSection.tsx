@@ -69,15 +69,17 @@ export function FAQSection() {
               <Accordion.Item 
                 key={`left-${idx}`} 
                 value={`left-${idx}`} 
-                className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
+                className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm data-[state=open]:bg-dark data-[state=open]:border-white/10 transition-colors duration-300"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-dark hover:text-primary transition-colors group [&[data-state=open]>svg]:rotate-180">
-                    {faq.q}
-                    <Icon icon="mdi:chevron-down" className="text-2xl text-gray-400 transition-transform duration-300 ease-out shrink-0" />
+                  <Accordion.Trigger className="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-dark hover:text-primary transition-colors [&[data-state=open]>svg]:rotate-180">
+                    <span className="group-data-[state=open]:text-transparent group-data-[state=open]:bg-clip-text group-data-[state=open]:bg-gradient-to-r group-data-[state=open]:from-primary group-data-[state=open]:to-secondary transition-all">
+                      {faq.q}
+                    </span>
+                    <Icon icon="mdi:chevron-down" className="text-2xl text-gray-400 group-data-[state=open]:text-white transition-transform duration-300 ease-out shrink-0" />
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Content className="overflow-hidden text-gray-600 px-6 pb-6 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                <Accordion.Content className="overflow-hidden text-gray-600 group-data-[state=open]:text-white/90 px-6 pb-6 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                   {faq.a}
                 </Accordion.Content>
               </Accordion.Item>
@@ -89,15 +91,17 @@ export function FAQSection() {
               <Accordion.Item 
                 key={`right-${idx}`} 
                 value={`right-${idx}`} 
-                className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
+                className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm data-[state=open]:bg-dark data-[state=open]:border-white/10 transition-colors duration-300"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-dark hover:text-primary transition-colors group [&[data-state=open]>svg]:rotate-180">
-                    {faq.q}
-                    <Icon icon="mdi:chevron-down" className="text-2xl text-gray-400 transition-transform duration-300 ease-out shrink-0" />
+                  <Accordion.Trigger className="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-dark hover:text-primary transition-colors [&[data-state=open]>svg]:rotate-180">
+                    <span className="group-data-[state=open]:text-transparent group-data-[state=open]:bg-clip-text group-data-[state=open]:bg-gradient-to-r group-data-[state=open]:from-primary group-data-[state=open]:to-secondary transition-all">
+                      {faq.q}
+                    </span>
+                    <Icon icon="mdi:chevron-down" className="text-2xl text-gray-400 group-data-[state=open]:text-white transition-transform duration-300 ease-out shrink-0" />
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Content className="overflow-hidden text-gray-600 px-6 pb-6 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                <Accordion.Content className="overflow-hidden text-gray-600 group-data-[state=open]:text-white/90 px-6 pb-6 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                   {faq.a}
                 </Accordion.Content>
               </Accordion.Item>
