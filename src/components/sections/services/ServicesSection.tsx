@@ -163,44 +163,42 @@ export function ServicesSection() {
                       }}
                     >
                       <div
-                        className={`w-full h-full rounded-[2.5rem] p-5 flex flex-col shadow-2xl transition-all duration-300 bg-gradient-to-b from-[#0F2244] to-[#0A192F] text-white border border-white/10 ${isActive
-                          ? 'shadow-2xl shadow-primary/20 scale-100 border-white/20'
-                          : 'opacity-70 scale-95 border-white/5'
+                        className={`w-full h-full rounded-[2.5rem] flex flex-col shadow-2xl transition-all duration-300 bg-white border overflow-hidden text-dark ${isActive
+                          ? 'border-gray-200/80 shadow-2xl shadow-gray-300/80 scale-100'
+                          : 'opacity-70 scale-95 border-gray-100'
                           }`}
                       >
-                        {/* Image Area */}
-                        <div className="relative h-[48%] rounded-[2rem] overflow-hidden shrink-0">
+                        {/* Image Area — full bleed, rounded at top via parent overflow-hidden */}
+                        <div className="relative h-[48%] w-full shrink-0 overflow-hidden">
                           <img
                             src={service.image}
                             alt={service.title}
                             className="w-full h-full object-cover"
                           />
-                          {/* Subtle overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/35" />
-                          {/* Icon — top right, glass bg, white icon */}
-                          <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-md shadow-md transition-all">
+                          {/* Icon — top right, glass bg, dark icon */}
+                          <div className="absolute top-4 right-4 w-10 h-10 bg-white/80 hover:bg-white border border-gray-200 text-dark rounded-full flex items-center justify-center backdrop-blur-md shadow-md transition-all">
                             <Icon icon={service.icon} className="text-xl" />
                           </div>
                         </div>
 
                         {/* Content Area */}
-                        <div className="flex-grow flex flex-col justify-between pt-5">
+                        <div className="flex-grow flex flex-col justify-between p-6 pt-5 bg-white">
                           <div>
                             {/* Title + Tag Row */}
                             <div className="flex items-center justify-between gap-4">
-                              <h3 className="text-xl font-bold tracking-tight text-white leading-snug">{service.title}</h3>
-                              <span className="shrink-0 px-3.5 py-1 bg-white/10 border border-white/10 rounded-full text-xs font-semibold text-white/90">
+                              <h3 className="text-xl font-bold tracking-tight text-dark leading-snug">{service.title}</h3>
+                              <span className="shrink-0 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold text-primary">
                                 {service.tag}
                               </span>
                             </div>
                             {/* Description */}
-                            <p className="text-gray-300 text-sm leading-relaxed mt-3">{service.description}</p>
+                            <p className="text-gray-500 text-sm leading-relaxed mt-2.5">{service.description}</p>
                           </div>
 
                           {/* Chips Row */}
                           <div className="flex flex-wrap gap-2 mt-4">
                             {service.chips.map((chip, cIdx) => (
-                              <span key={cIdx} className="px-3 py-1 bg-white/10 border border-white/5 rounded-full text-xs font-semibold text-white">
+                              <span key={cIdx} className="px-3 py-1 bg-gray-100 border border-gray-200/60 rounded-full text-xs font-semibold text-gray-600">
                                 {chip}
                               </span>
                             ))}
@@ -211,7 +209,7 @@ export function ServicesSection() {
                             href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3.5 bg-white hover:bg-gray-100 text-dark font-black text-center rounded-full hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-5"
+                            className="w-full py-3.5 bg-dark hover:bg-primary text-white font-bold text-center rounded-full hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-5"
                           >
                             Solicitar agora
                             <Icon icon="mdi:arrow-right" className="text-base" />
@@ -264,39 +262,38 @@ export function ServicesSection() {
             >
               {services.map((service, idx) => (
                 <div key={idx} className="w-full shrink-0 px-4">
-                  <div className="rounded-[2.5rem] p-5 flex flex-col bg-gradient-to-b from-[#0F2244] to-[#0A192F] text-white border border-white/10 shadow-2xl">
-                    {/* Image */}
-                    <div className="relative h-48 shrink-0 rounded-[2rem] overflow-hidden">
+                  <div className="rounded-[2.5rem] flex flex-col bg-white border border-gray-100 shadow-2xl overflow-hidden text-dark">
+                    {/* Image — full bleed */}
+                    <div className="relative h-48 w-full shrink-0 overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/35" />
                       {/* Icon */}
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 border border-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-md shadow-md">
+                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/80 border border-gray-200 text-dark rounded-full flex items-center justify-center backdrop-blur-md shadow-md">
                         <Icon icon={service.icon} className="text-xl" />
                       </div>
                     </div>
                     {/* Content */}
-                    <div className="flex-grow flex flex-col justify-between pt-5">
+                    <div className="flex-grow flex flex-col justify-between p-6 pt-5 bg-white">
                       <div>
                         {/* Title + Tag Row */}
                         <div className="flex items-center justify-between gap-4">
-                          <h3 className="text-xl font-bold tracking-tight text-white leading-snug">
+                          <h3 className="text-xl font-bold tracking-tight text-dark leading-snug">
                             {service.title}
                           </h3>
-                          <span className="shrink-0 px-3.5 py-1 bg-white/10 border border-white/10 rounded-full text-xs font-semibold text-white/90">
+                          <span className="shrink-0 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold text-primary">
                             {service.tag}
                           </span>
                         </div>
-                        <p className="text-gray-300 text-sm leading-relaxed mt-3">{service.description}</p>
+                        <p className="text-gray-500 text-sm leading-relaxed mt-2.5">{service.description}</p>
                       </div>
 
                       {/* Chips */}
                       <div className="flex flex-wrap gap-2 mt-4">
                         {service.chips.map((chip, cIdx) => (
-                          <span key={cIdx} className="px-3 py-1 bg-white/10 border border-white/5 rounded-full text-xs font-semibold text-white">
+                          <span key={cIdx} className="px-3 py-1 bg-gray-100 border border-gray-200/60 rounded-full text-xs font-semibold text-gray-600">
                             {chip}
                           </span>
                         ))}
@@ -307,7 +304,7 @@ export function ServicesSection() {
                         href={`https://wa.me/5511982822443?text=Olá! Gostaria de solicitar o serviço de ${encodeURIComponent(service.title)}.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3.5 bg-white hover:bg-gray-100 text-dark font-black text-center rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-5"
+                        className="w-full py-3.5 bg-dark hover:bg-primary text-white font-bold text-center rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-5"
                       >
                         Solicitar agora
                         <Icon icon="mdi:arrow-right" className="text-base" />

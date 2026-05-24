@@ -214,7 +214,7 @@ export function HeroSection() {
               <SaturnRingText
                 width={ringSize.w}
                 height={ringSize.h}
-                radius={Math.min(ringSize.w, ringSize.h) * 0.52}
+                radius={Math.min(ringSize.w, ringSize.h) * 0.45}
               />
             )}
             <img
