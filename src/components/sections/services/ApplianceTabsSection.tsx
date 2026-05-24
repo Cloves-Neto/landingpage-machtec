@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Icon } from '@iconify/react';
 
@@ -28,6 +28,17 @@ const serviceDetails = {
 export function ApplianceTabsSection() {
   const [activeTab, setActiveTab] = useState<ServiceType>('geladeiras');
 
+  useEffect(() => {
+    const tabs: ServiceType[] = ['geladeiras', 'lavadoras', 'microondas'];
+    const interval = setInterval(() => {
+      setActiveTab((prev) => {
+        const idx = tabs.indexOf(prev);
+        return tabs[(idx + 1) % tabs.length];
+      });
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="solucoes" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -40,7 +51,7 @@ export function ApplianceTabsSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-black mb-6 text-dark"
           >
-            Soluções Específicas <br /> para Cada <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Aparelho</span>
+            Soluções Específicas <br /> para Cada <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-sky-400">Aparelho</span>
           </motion.h2>
         </div>
 
@@ -57,12 +68,12 @@ export function ApplianceTabsSection() {
                   onClick={() => setActiveTab(key)}
                   className={`flex-1 flex flex-col items-center lg:items-start justify-center p-4 lg:p-6 rounded-2xl lg:rounded-[1.5rem] transition-all duration-300 relative overflow-hidden border ${
                     isActive 
-                      ? 'bg-gray-50 border-primary/30 shadow-lg shadow-primary/10 scale-105 lg:scale-100 z-10' 
+                      ? 'bg-gray-50 border-sky-300 shadow-lg shadow-sky-100 scale-105 lg:scale-100 z-10' 
                       : 'bg-white border-gray-200 shadow-sm hover:bg-gray-50'
                   }`}
                 >
                   <div className="flex items-center gap-0 lg:gap-4 lg:mb-1">
-                    <div className={`w-14 h-14 lg:w-12 lg:h-12 rounded-2xl lg:rounded-xl flex items-center justify-center transition-colors ${isActive ? 'bg-primary text-white shadow-md shadow-primary/40' : 'bg-gray-100 text-gray-500'}`}>
+                    <div className={`w-14 h-14 lg:w-12 lg:h-12 rounded-2xl lg:rounded-xl flex items-center justify-center transition-colors ${isActive ? 'bg-sky-500 text-white shadow-md shadow-sky-500/30' : 'bg-gray-100 text-gray-500'}`}>
                       <Icon 
                         icon={
                           key === 'geladeiras' ? 'mdi:fridge-outline' :
