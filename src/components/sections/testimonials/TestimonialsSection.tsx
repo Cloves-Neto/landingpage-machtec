@@ -30,25 +30,25 @@ export function TestimonialsSection() {
       {cards.map((test, idx) => (
         <div 
           key={idx}
-          className="bg-white/5 border border-white/10 p-8 rounded-3xl w-[350px] md:w-[400px] shrink-0 hover:bg-white/10 transition-colors backdrop-blur-sm flex flex-col"
+          className="bg-white/5 border border-white/10 p-5 md:p-8 rounded-3xl w-[280px] md:w-[400px] shrink-0 hover:bg-white/10 transition-colors backdrop-blur-sm flex flex-col"
         >
-          <div className="flex text-yellow-400 mb-4">
+          <div className="flex text-yellow-400 mb-3 md:mb-4">
             {[...Array(test.rating)].map((_, i) => (
-              <Icon key={i} icon="mdi:star" className="text-xl" />
+              <Icon key={i} icon="mdi:star" className="text-lg md:text-xl" />
             ))}
           </div>
-          <p className="text-gray-300 italic mb-6 leading-relaxed flex-1 whitespace-normal">"{test.content}"</p>
-          <div className="flex items-center gap-4 mt-auto">
+          <p className="text-gray-300 italic mb-4 md:mb-6 leading-relaxed flex-1 whitespace-normal text-sm md:text-base">"{test.content}"</p>
+          <div className="flex items-center gap-3 md:gap-4 mt-auto">
             {test.imageUrl ? (
-              <img src={test.imageUrl} alt={test.name} className="w-12 h-12 rounded-full shrink-0 object-cover" />
+              <img src={test.imageUrl} alt={test.name} className="w-10 h-10 md:w-12 md:h-12 rounded-full shrink-0 object-cover" />
             ) : (
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-lg shrink-0">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-base md:text-lg shrink-0">
                 {test.name.charAt(0)}
               </div>
             )}
             <div>
-              <h4 className="font-bold whitespace-normal">{test.name}</h4>
-              <p className="text-sm text-gray-400">{test.role}</p>
+              <h4 className="font-bold text-sm md:text-base whitespace-normal">{test.name}</h4>
+              <p className="text-xs md:text-sm text-gray-400">{test.role}</p>
             </div>
           </div>
         </div>
