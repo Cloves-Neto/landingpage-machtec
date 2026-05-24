@@ -111,7 +111,7 @@ export function SaturnRingText({ width, height, radius = 230 }: Props) {
         ref={canvasBackRef}
         width={width}
         height={height}
-        className="absolute inset-0 pointer-events-none top-40"
+        className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 0 }}
       />
       {/* Front layer — rendered above image */}
@@ -119,7 +119,7 @@ export function SaturnRingText({ width, height, radius = 230 }: Props) {
         ref={canvasFrontRef}
         width={width}
         height={height}
-        className="absolute inset-0 pointer-events-none top-40"
+        className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 20 }}
       />
     </>

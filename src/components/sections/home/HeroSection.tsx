@@ -160,10 +160,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-[clamp(2.75rem,5.5vw,5.5rem)] font-black text-white leading-[1.05] tracking-tight mb-6"
+              className="text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight mb-6"
             >
               Assistência Técnica <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Rápida e Garantida.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Especializada MachTec</span>
             </motion.h1>
 
             <motion.p
@@ -202,43 +202,29 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: invisible anchor for ring sizing */}
-          <div className="w-1/2 self-stretch" />
+          {/* Right Column: Técnico + Ring */}
+          <motion.div
+            ref={ringContainerRef}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="w-1/2 self-stretch relative flex flex-col justify-end items-center min-h-[500px]"
+          >
+            {ringSize.w > 0 && (
+              <SaturnRingText
+                width={ringSize.w}
+                height={ringSize.h}
+                radius={Math.min(ringSize.w, ringSize.h) * 0.44}
+              />
+            )}
+            <img
+              src="/images/hero-tecnico.png"
+              alt="Técnico Especializado"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[98%] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)] z-10 pointer-events-none"
+            />
+          </motion.div>
         </div>
       </div>
-
-      {/* ── Right side: Image + Saturn Ring (desktop only) ── */}
-      <motion.div
-        ref={ringContainerRef}
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="hidden md:flex absolute pointer-events-none"
-        style={{
-          right: '4%',
-          top: 0,
-          bottom: '120px',
-          width: 'min(44vw, 520px)',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          zIndex: 5,
-        }}
-      >
-        {ringSize.w > 0 && (
-          <SaturnRingText
-            width={ringSize.w}
-            height={ringSize.h}
-            radius={Math.min(ringSize.w, ringSize.h) * 0.42}
-          />
-        )}
-        <img
-          src="/images/hero-tecnico.png"
-          alt="Técnico Especializado"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom drop-shadow-2xl"
-          style={{ zIndex: 10 }}
-        />
-      </motion.div>
 
       {/* Stats Bar */}
       <div className="relative z-20 border-t border-white/10 bg-white/5 backdrop-blur-sm">

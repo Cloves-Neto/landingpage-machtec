@@ -58,11 +58,7 @@ export function Navbar() {
           {/* Logo Pill */}
           <a
             href="#"
-            className={`flex items-center justify-center gap-2 transition-all duration-300 rounded-full ${
-              scrolled
-                ? 'bg-transparent border-transparent shadow-none px-0 py-0'
-                : 'bg-black/80 backdrop-blur-lg shadow-lg border border-white/10 px-4 py-1.5'
-            }`}
+            className={`flex items-center justify-center gap-2 transition-all duration-300 rounded-full`}
           >
             <div className={`rounded-md px-3 py-1 flex items-center justify-center transition-all duration-300 ${
               scrolled ? 'bg-white border border-gray-200 shadow-sm' : 'bg-white'
@@ -72,11 +68,7 @@ export function Navbar() {
           </a>
 
           {/* Nav Links Pill — Desktop */}
-          <nav className={`hidden md:flex items-center gap-1 transition-all duration-300 rounded-full px-2 py-2 ${
-            scrolled
-              ? 'bg-transparent border-transparent shadow-none'
-              : 'bg-black/80 backdrop-blur-lg shadow-lg border border-white/10'
-          }`}>
+          <nav className={`hidden md:flex items-center gap-1 transition-all duration-300 rounded-full px-2 py-2`}>
             {navItems.map((item) => (
               <div
                 key={item.label}

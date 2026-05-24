@@ -17,7 +17,7 @@ export function CTASection() {
           
           {/* Grid Pattern Overlay */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at right center, rgba(17,17,17,0.4) 0%, #111111 100%)' }}></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at right center, rgba(10,25,47,0.4) 0%, #0A192F 100%)' }}></div>
 
           <div className="relative z-10 flex flex-col xl:flex-row xl:items-stretch justify-between gap-16 xl:gap-24">
             
