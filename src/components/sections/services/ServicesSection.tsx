@@ -54,8 +54,33 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [mobileIndex, setMobileIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const total = services.length;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      setMobileIndex((prev) => (prev + 1) % total);
+    } else if (isRightSwipe) {
+      setMobileIndex((prev) => (prev - 1 + total) % total);
+    }
+  };
+
+  const minSwipeDistance = 50;
   const angleStep = 360 / total;
 
   const next = useCallback(() => {
@@ -243,6 +268,9 @@ export function ServicesSection() {
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {services.map((service, idx) => (
                 <div key={idx} className="w-full shrink-0 px-4">

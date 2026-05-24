@@ -65,6 +65,7 @@ export function DifferentialsSection() {
          {/* Regular Cards */}
            {differentials.map((item, index) => {
               let newColSpan = "col-span-1";
+              const activeColor = item.color.replace('group-hover:', '');
 
               return (
               <motion.div
@@ -79,19 +80,18 @@ export function DifferentialsSection() {
                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity z-0"></div>
                  
                  <div className="relative z-10 flex flex-col h-full justify-between gap-6">
-                   <Icon 
-                      icon={item.icon} 
-                      className={`text-5xl text-gray-300 transition-colors duration-300 ${item.color}`} 
-                   />
-                   <div>
-                     <h3 className="text-xl font-bold text-dark mb-3">{item.title}</h3>
-                     <p className="text-gray-500 text-sm font-medium leading-relaxed">{item.description}</p>
-                   </div>
+                    <Icon 
+                       icon={item.icon} 
+                       className={`text-5xl transition-colors duration-300 ${activeColor} md:text-gray-300 md:${item.color}`}
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold text-dark mb-3">{item.title}</h3>
+                      <p className="text-gray-500 text-sm font-medium leading-relaxed">{item.description}</p>
+                    </div>
                  </div>
               </motion.div>
               );
            })}
-
 
          </div>
 

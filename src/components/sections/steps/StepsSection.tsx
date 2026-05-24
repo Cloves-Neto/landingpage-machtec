@@ -57,7 +57,7 @@ export function StepsSection() {
               transition={{ delay: idx * 0.2 }}
               className="relative z-10 flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-100 shadow-xl flex items-center justify-center mb-6 text-gray-400 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+              <div className="w-24 h-24 rounded-full bg-white border-4 border-primary/20 shadow-xl flex items-center justify-center mb-6 text-primary md:text-gray-400 md:border-gray-100 md:group-hover:text-primary md:group-hover:border-primary/20 transition-all duration-300">
                 <Icon icon={step.icon} className="text-4xl" />
               </div>
               <div className="w-8 h-8 rounded-full bg-dark text-white font-bold flex items-center justify-center absolute top-0 right-1/2 translate-x-12 -translate-y-2 border-4 border-white">
