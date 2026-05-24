@@ -11,8 +11,7 @@ const PRODUTOS = [
 ];
 
 const MARCAS = [
-  'Brastemp', 'Consul', 'Electrolux', 'LG', 'Samsung', 'Midea', 'Philco',
-  'Panasonic', 'Whirlpool', 'Bosch', 'Daikin', 'Springer', 'Outra',
+  'CONSUL', 'ELECTROLUX', 'SAMSUNG', 'LG', 'BRASTEMP', 'MIDEA'
 ];
 
 interface FormData {
@@ -146,10 +145,10 @@ export function ContactFormSection() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 text-green-600 border border-green-200 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm"
         >
-          <Icon icon="mdi:message-fast" />
-          Atendimento Rápido
+          <Icon icon="logos:whatsapp-icon" className="text-xs" />
+          Contato via WhatsApp
         </motion.span>
 
         <motion.h2
@@ -172,7 +171,7 @@ export function ContactFormSection() {
           transition={{ delay: 0.1 }}
           className="text-gray-500 text-lg max-w-xl mx-auto"
         >
-          Preencha as informações abaixo e envie diretamente para o nosso WhatsApp. Respondemos em minutos!
+          Preencha as informações abaixo para enviar o orçamento diretamente para o nosso WhatsApp. Retornamos em poucos minutos!
         </motion.p>
       </div>
 
