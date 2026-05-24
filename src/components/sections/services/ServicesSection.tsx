@@ -26,7 +26,7 @@ const services: Service[] = [
     icon: 'mdi:wrench',
     image: '/images/service-1.jpeg',
     tag: 'Mais Procurado',
-    chips: ['⭐ 5.0', 'Garantia 90d', 'Rápido'],
+    chips: ['⭐ 5.0', 'Garantia de até 90d', 'Rápido'],
   },
   {
     title: 'Reparo de Placas',

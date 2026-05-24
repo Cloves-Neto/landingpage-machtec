@@ -12,7 +12,7 @@ const serviceDetails = {
     image: '/src/assets/service-fridge.png',
   },
   lavadoras: {
-    title: 'Máquinas de Lavar',
+    title: 'Lavadoras & Secadoras',
     description: 'Consertos rápidos para que sua lavanderia não pare. Trabalhamos com modelos Lava e Seca, abertura frontal e superior.',
     features: ['Troca de Rolamentos', 'Limpeza de Tambor', 'Reparo de Placa', 'Desobstrução'],
     image: '/src/assets/service-washer.png',
@@ -51,7 +51,7 @@ export function ApplianceTabsSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-black mb-6 text-dark"
           >
-            Soluções Específicas <br /> para Cada <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-sky-400">Aparelho</span>
+            Soluções Específicas <br /> para Cada <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Aparelho</span>
           </motion.h2>
         </div>
 
