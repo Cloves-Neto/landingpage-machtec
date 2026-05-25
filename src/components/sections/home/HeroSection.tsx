@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { SaturnRingText } from '../../shared/SaturnRingText';
 
 const stats = [
-  { value: '+21', label: 'Anos de Mercado', icon: 'mdi:calendar-star' },
+  { value: '+22', label: 'Anos de Mercado', icon: 'mdi:calendar-star' },
   { value: '+30k', label: 'Atendimentos', icon: 'mdi:check-decagram' },
   { value: 'Com garantia', label: 'Garantia', icon: 'mdi:shield-check' },
   { value: 'Ágil', label: 'Atendimento', icon: 'mdi:lightning-bolt' },
