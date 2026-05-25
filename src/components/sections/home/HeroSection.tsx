@@ -6,7 +6,7 @@ import { SaturnRingText } from '../../shared/SaturnRingText';
 const stats = [
   { value: '+22', label: 'Anos de Mercado', icon: 'mdi:calendar-star' },
   { value: '+30k', label: 'Atendimentos', icon: 'mdi:check-decagram' },
-  { value: 'Com garantia', label: 'Garantia', icon: 'mdi:shield-check' },
+  { value: 'Flexível', label: 'Garantia', icon: 'mdi:shield-check' },
   { value: 'Ágil', label: 'Atendimento', icon: 'mdi:lightning-bolt' },
 ];
 
@@ -76,7 +76,7 @@ export function HeroSection() {
             transition={{ delay: 0.5 }}
             className="absolute top-20 right-4 w-16 h-16 rounded-2xl bg-primary flex flex-col items-center justify-center shadow-xl shadow-primary/40"
           >
-            <span className="text-white font-black text-xl leading-none">21</span>
+            <span className="text-white font-black text-xl leading-none">22</span>
             <span className="text-white/80 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">anos<br />de exp.</span>
           </motion.div>
         </div>
