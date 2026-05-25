@@ -4,21 +4,21 @@ import { Icon } from '@iconify/react';
 const differentials = [
   {
     title: 'Atendimento Rápido',
-    description: 'Chegamos até você no menor tempo possível para minimizar qualquer transtorno.',
+    description: 'Sem demora e sem enrolação. O serviço é realizado com máxima precisão e agilidade.',
     icon: 'mdi:rocket-launch-outline',
     colSpan: 'md:col-span-2 lg:col-span-1',
     color: 'group-hover:text-primary'
   },
   {
-    title: 'Técnicos Especializados',
-    description: 'Profissionais altamente treinados e atualizados com as mais novas tecnologias do mercado.',
+    title: 'Técnico Especializado',
+    description: 'Profissional altamente treinado e atualizado com as mais novas tecnologias do mercado.',
     icon: 'mdi:account-hard-hat-outline',
     colSpan: 'md:col-span-1 lg:col-span-2',
     color: 'group-hover:text-secondary'
   },
   {
     title: 'Peças Originais',
-    description: 'Trabalhamos exclusivamente com peças de fábrica, garantindo a durabilidade do reparo.',
+    description: 'Trabalhamos com peças originais de fábrica e também oferecemos opções com excelente custo-benefício para os clientes.',
     icon: 'mdi:cog-box',
     colSpan: 'md:col-span-1 lg:col-span-2',
     color: 'group-hover:text-primary'

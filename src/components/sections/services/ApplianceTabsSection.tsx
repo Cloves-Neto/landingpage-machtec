@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Icon } from '@iconify/react';
 
@@ -7,19 +7,19 @@ type ServiceType = 'geladeiras' | 'lavadoras' | 'microondas';
 const serviceDetails = {
   geladeiras: {
     title: 'Geladeiras & Freezers',
-    description: 'Manutenção completa em refrigeração. Desde troca de compressores, recarga de gás até reparo de placas eletrônicas e termostatos.',
-    features: ['Troca de Borrachas', 'Recarga de Gás', 'Reparo de Motor', 'Limpeza de Sistema'],
+    description: 'Manutenção completa em refrigeração. Desde diagnóstico preciso de compressores e recarga de gás até substituição de termostatos.',
+    features: ['Substituição de Termostato', 'Recarga de Gás', 'Diagnóstico de Compressor', 'Revisão Elétrica'],
     image: '/images/geladeira-freezer.jpeg',
   },
   lavadoras: {
     title: 'Lavadoras & Secadoras',
     description: 'Consertos rápidos para que sua lavanderia não pare. Trabalhamos com modelos Lava e Seca, abertura frontal e superior.',
-    features: ['Troca de Rolamentos', 'Limpeza de Tambor', 'Reparo de Placa', 'Desobstrução'],
+    features: ['Troca de Rolamentos', 'Alinhamento Mecânico', 'Substituição de Atuador', 'Desobstrução de Bombas'],
     image: '/images/lava-e-seca.jpeg',
   },
   microondas: {
     title: 'Micro-ondas',
-    description: 'Assistência técnica especializada em micro-ondas industriais e residenciais, garantindo aquecimento rápido e seguro.',
+    description: 'Assistência técnica especializada em micro-ondas residenciais, garantindo aquecimento rápido e seguro.',
     features: ['Troca de Magnetron', 'Reparo de Teclado', 'Substituição de Fusível', 'Manutenção de Trafo'],
     image: '/images/microondas.jpeg',
   },
@@ -27,17 +27,35 @@ const serviceDetails = {
 
 export function ApplianceTabsSection() {
   const [activeTab, setActiveTab] = useState<ServiceType>('geladeiras');
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  useEffect(() => {
-    const tabs: ServiceType[] = ['geladeiras', 'lavadoras', 'microondas'];
-    const interval = setInterval(() => {
-      setActiveTab((prev) => {
-        const idx = tabs.indexOf(prev);
-        return tabs[(idx + 1) % tabs.length];
-      });
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
+  const tabs: ServiceType[] = ['geladeiras', 'lavadoras', 'microondas'];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    const currentIdx = tabs.indexOf(activeTab);
+
+    if (isLeftSwipe) {
+      const nextIdx = (currentIdx + 1) % tabs.length;
+      setActiveTab(tabs[nextIdx]);
+    } else if (isRightSwipe) {
+      const prevIdx = (currentIdx - 1 + tabs.length) % tabs.length;
+      setActiveTab(tabs[prevIdx]);
+    }
+  };
 
   return (
     <section id="solucoes" className="py-24 relative overflow-hidden">
@@ -60,7 +78,7 @@ export function ApplianceTabsSection() {
 
           {/* Menu Lateral - Row no mobile, Col no desktop */}
           <div className="lg:w-1/3 flex flex-row lg:flex-col gap-4 lg:h-full justify-between lg:justify-start">
-            {(Object.keys(serviceDetails) as ServiceType[]).map((key) => {
+            {tabs.map((key) => {
               const isActive = activeTab === key;
               return (
                 <button
@@ -99,7 +117,12 @@ export function ApplianceTabsSection() {
           </div>
 
           {/* Painel de Conteúdo e Imagem - Height full */}
-          <div className="lg:w-2/3 relative h-[450px] lg:h-full rounded-3xl lg:rounded-[2.5rem] overflow-hidden bg-dark border border-gray-100 shadow-2xl group">
+          <div 
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="lg:w-2/3 relative h-[450px] lg:h-full rounded-3xl lg:rounded-[2.5rem] overflow-hidden bg-dark border border-gray-100 shadow-2xl group cursor-grab active:cursor-grabbing"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -131,30 +154,34 @@ export function ApplianceTabsSection() {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="text-gray-300 mb-8 max-w-xl text-lg leading-relaxed"
+                    className="text-gray-300 mb-0 max-w-xl text-lg leading-relaxed"
                   >
                     {serviceDetails[activeTab].description}
                   </motion.p>
-
-                  <motion.ul
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                  >
-                    {serviceDetails[activeTab].features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-sm md:text-base text-gray-200 font-medium">
-                        <Icon icon="mdi:check-decagram" className="text-secondary text-xl" />
-                        {feat}
-                      </li>
-                    ))}
-                  </motion.ul>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
         </div>
+
+        {/* Mobile Slide Indicators (Bullets) */}
+        <div className="flex justify-center gap-2 mt-6 lg:hidden">
+          {tabs.map((tabKey) => {
+            const isActive = activeTab === tabKey;
+            return (
+              <button
+                key={tabKey}
+                onClick={() => setActiveTab(tabKey)}
+                className={`transition-all duration-300 rounded-full h-2.5 ${
+                  isActive ? 'w-8 bg-sky-500' : 'w-2.5 bg-gray-300'
+                }`}
+                aria-label={`Ir para ${serviceDetails[tabKey].title}`}
+              />
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

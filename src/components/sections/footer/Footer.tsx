@@ -24,22 +24,22 @@ export function Footer() {
           </div>
           
           <div className="space-y-4 text-gray-300 mt-4">
-            <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer" className="flex items-center gap-4 group hover:text-white transition-colors">
+            <a href="https://wa.me/5511982822443" target="_blank" rel="noreferrer" className="flex items-center gap-4 group hover:text-white transition-colors">
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 group-hover:text-primary transition-colors">
                 <Icon icon="mdi:whatsapp" className="text-xl" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">WhatsApp</p>
-                <p className="font-medium text-lg">(11) 99999-9999</p>
+                <p className="font-medium text-lg">(11) 98282-2443</p>
               </div>
             </a>
-            <a href="tel:01133333333" className="flex items-center gap-4 group hover:text-white transition-colors">
+            <a href="tel:1143354832" className="flex items-center gap-4 group hover:text-white transition-colors">
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 group-hover:text-primary transition-colors">
                 <Icon icon="mdi:phone-outline" className="text-xl" />
               </div>
               <div>
-                <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Central de Atendimento</p>
-                <p className="font-medium text-lg">(11) 3333-3333</p>
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Telefone Fixo</p>
+                <p className="font-medium text-lg">(11) 4335-4832</p>
               </div>
             </a>
           </div>
@@ -87,11 +87,11 @@ export function Footer() {
           <ul className="space-y-4 text-gray-400 mb-8">
             <li className="flex justify-between border-b border-white/5 pb-2">
               <span>Segunda a Sexta</span>
-              <span className="font-semibold text-white">08:00 - 18:00</span>
+              <span className="font-semibold text-white">08:30 - 18:00</span>
             </li>
             <li className="flex justify-between border-b border-white/5 pb-2">
               <span>Sábados</span>
-              <span className="font-semibold text-white">08:00 - 14:00</span>
+              <span className="font-semibold text-white">09:00 - 14:00</span>
             </li>
             <li className="flex justify-between text-primary font-semibold">
               <span>Domingo</span>
@@ -102,7 +102,7 @@ export function Footer() {
           <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <h5 className="font-bold text-white mb-2 text-sm uppercase tracking-wider text-primary">Regiões Atendidas:</h5>
             <p className="text-sm text-gray-400 leading-relaxed">
-              São Paulo (Centro, Zonas Norte, Sul, Leste, Oeste) e todo o ABC Paulista.
+              São Bernardo do Campo (sem taxa de visita) e outras regiões do ABCD Paulista sob consulta.
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm relative z-10">
         <p>&copy; {new Date().getFullYear()} MachTec. Todos os direitos reservados.</p>
         <div className="font-medium">
-          CNPJ: 00.000.000/0001-00
+          CNPJ: 12.318.491/0001-00
         </div>
       </div>
     </footer>

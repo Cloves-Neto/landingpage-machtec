@@ -35,7 +35,7 @@ export function CTASection() {
             {/* Right Side: Conversion Zone — aligned bottom-right on desktop */}
             <div className="w-full xl:w-auto shrink-0 flex flex-col items-center xl:items-end xl:justify-end">
               <a 
-                href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!"
+                href="https://wa.me/5511982822443?text=Olá! Gostaria de solicitar um orçamento."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center justify-center px-8 md:px-12 py-4 md:py-7 font-black text-base md:text-2xl text-white transition-all duration-300 bg-[#25D366] rounded-xl md:rounded-full hover:bg-[#1DB954] overflow-hidden shadow-[0_0_50px_rgba(37,211,102,0.35)] hover:shadow-[0_0_80px_rgba(37,211,102,0.6)] hover:-translate-y-2 w-full sm:w-auto"

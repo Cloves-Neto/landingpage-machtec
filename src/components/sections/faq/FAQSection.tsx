@@ -5,26 +5,22 @@ import { Icon } from '@iconify/react';
 const faqsLeft = [
   {
     q: 'Atendem em quais regiões?',
-    a: 'Atuamos fortemente em toda a região metropolitana. Contamos com equipes distribuídas estrategicamente para garantir que o seu chamado seja atendido no mesmo dia ou no máximo em 24h úteis.'
+    a: 'Atuamos fortemente em toda a região do ABCD Paulista. Contamos com atendimento planejado para garantir que o seu chamado seja atendido com agilidade e eficiência.'
   },
   {
     q: 'Quanto custa a visita técnica?',
-    a: 'A visita possui uma pequena taxa de deslocamento que varia de acordo com o seu CEP. A excelente notícia é que, ao aprovar o orçamento do conserto, essa taxa de visita é 100% abatida do valor total!'
-  },
-  {
-    q: 'O conserto é feito na hora?',
-    a: 'Na maioria absoluta dos casos, sim! Nossos técnicos levam peças de reposição frequentes no veículo. Se o problema for mais complexo ou exigir uma peça específica sob encomenda, agendamos o retorno com prioridade.'
+    a: 'Para moradores de São Bernardo do Campo, não cobramos taxa de visita técnica. Para as demais regiões do ABCD Paulista, a taxa é sob consulta e, caso o orçamento do conserto seja aprovado, o valor da visita é 100% abatido!'
   }
 ];
 
 const faqsRight = [
   {
     q: 'Vocês utilizam peças originais?',
-    a: 'Sim, a qualidade é inegociável. Trabalhamos primariamente com peças originais de fábrica para assegurar a durabilidade e a segurança do seu eletrodoméstico, mantendo a performance ideal.'
+    a: 'Sim, a qualidade é inegociável. Trabalhamos com peças de fábrica de excelente procedência para assegurar a durabilidade e a segurança do seu eletrodoméstico, mantendo a performance ideal.'
   },
   {
     q: 'Qual é o prazo de garantia do conserto?',
-    a: 'Todos os nossos serviços e peças substituídas contam com garantia formal de 90 dias, conforme o Código de Defesa do Consumidor. Caso o mesmo problema volte a ocorrer, priorizamos o seu atendimento.'
+    a: 'Oferecemos garantia de 3, 6 ou 12 meses, a depender do tipo de serviço realizado e dos componentes substituídos.'
   },
   {
     q: 'Quais formas de pagamento vocês aceitam?',

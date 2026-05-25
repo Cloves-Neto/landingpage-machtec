@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 const steps = [
   {
     title: 'Solicite Atendimento',
-    description: 'Entre em contato pelo WhatsApp e agende uma visita técnica no melhor horário para você.',
+    description: 'Entre em contato pelo WhatsApp e agende uma visita técnica.',
     icon: 'mdi:calendar-clock',
   },
   {
@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: 'Aparelho Consertado',
-    description: 'Realizamos o conserto na hora (na maioria dos casos) com peças originais e garantia.',
+    description: 'Realizamos o conserto com peças originais e garantia.',
     icon: 'mdi:check-decagram-outline',
   }
 ];

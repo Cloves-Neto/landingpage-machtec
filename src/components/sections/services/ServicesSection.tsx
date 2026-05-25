@@ -26,15 +26,7 @@ const services: Service[] = [
     icon: 'mdi:wrench',
     image: '/images/microondas.jpeg',
     tag: 'Mais Procurado',
-    chips: ['⭐ 5.0', 'Garantia de até 90d', 'Rápido'],
-  },
-  {
-    title: 'Reparo de Placas',
-    description: 'Recuperação de módulos eletrônicos e painéis, evitando a troca completa de peças caras.',
-    icon: 'mdi:cpu-64-bit',
-    image: '/images/geladeira-freezer.jpeg',
-    tag: 'Eletrônica',
-    chips: ['⭐ 4.9', 'Original', 'Laboratório'],
+    chips: ['⭐ 5.0', 'Com garantia', 'Rápido'],
   },
   {
     title: 'Instalação Padrão',
@@ -48,7 +40,7 @@ const services: Service[] = [
 
 const CARD_WIDTH = 400;
 const CARD_HEIGHT = 540;
-const RADIUS = 480;
+const RADIUS = 420; // Adjusted for 3 cards
 
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -112,7 +104,7 @@ export function ServicesSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-dark mb-6"
           >
-            Serviços com Precisão{' '}
+            Serviço com Precisão{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Técnica</span>
           </motion.h2>
           <motion.p
@@ -122,7 +114,7 @@ export function ServicesSection() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            Nossa equipe técnica é formada por especialistas que resolvem o problema do seu aparelho na primeira visita.
+            Nosso técnico especializado resolve o problema do seu aparelho na primeira visita com agilidade e transparência.
           </motion.p>
         </div>
 

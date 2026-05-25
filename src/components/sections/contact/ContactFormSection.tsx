@@ -5,9 +5,7 @@ import { Icon } from '@iconify/react';
 const WHATSAPP_NUMBER = '5511982822443';
 
 const PRODUTOS = [
-  'Ar-condicionado', 'Geladeira / Refrigerador', 'Máquina de Lavar', 'Lava e Seca',
-  'Micro-ondas', 'Fogão / Cooktop', 'Forno Elétrico', 'Freezer',
-  'Secadora de Roupas', 'Adega / Frigobar', 'Outro',
+  'Máquina de Lavar', 'Secadora', 'Lava e Seca', 'Micro-ondas', 'Freezer', 'Frigobar', 'Outros'
 ];
 
 const MARCAS = [
@@ -16,31 +14,25 @@ const MARCAS = [
 
 interface FormData {
   nome: string;
-  email: string;
   telefone: string;
-  // Endereço estruturado
-  cep: string;
-  rua: string;
   numero: string;
   bairro: string;
   cidade: string;
-  uf: string;
-  // Aparelho
   produto: string;
   marca: string;
   defeito: string;
 }
 
 const empty: FormData = {
-  nome: '', email: '', telefone: '',
-  cep: '', rua: '', numero: '', bairro: '', cidade: '', uf: '',
+  nome: '', telefone: '',
+  numero: '', bairro: '', cidade: '',
   produto: '', marca: '', defeito: '',
 };
 
 function formatEndereco(d: FormData) {
-  const parts = [d.rua, d.numero, d.bairro, d.cidade, d.uf, d.cep]
-    .filter(Boolean).join(', ');
-  return parts || '—';
+  const parts = [d.bairro, d.cidade].filter(Boolean);
+  if (parts.length === 0) return '—';
+  return `${d.bairro}, ${d.cidade}${d.numero ? `, Nº ${d.numero}` : ''}`;
 }
 
 function formatWhatsApp(d: FormData): string {
@@ -48,14 +40,12 @@ function formatWhatsApp(d: FormData): string {
     '🔧 *Solicitação de Atendimento – MachTec*',
     '',
     `👤 *Nome:* ${d.nome}`,
-    `📧 *E-mail:* ${d.email || '—'}`,
     `📱 *Telefone:* ${d.telefone}`,
     '',
     `📍 *Endereço:*`,
-    `   CEP: ${d.cep}`,
-    `   Rua: ${d.rua}${d.numero ? `, ${d.numero}` : ''}`,
+    `   Cidade: ${d.cidade}`,
     `   Bairro: ${d.bairro}`,
-    `   Cidade: ${d.cidade} – ${d.uf}`,
+    `   Número: ${d.numero}`,
     '',
     `🛠️ *Produto:* ${d.produto}`,
     `🏷️ *Marca:* ${d.marca || '—'}`,
@@ -83,49 +73,11 @@ const inputCls =
 
 export function ContactFormSection() {
   const [form, setForm] = useState<FormData>(empty);
-  const [cepLoading, setCepLoading] = useState(false);
-  const [cepError, setCepError] = useState('');
   const [sent, setSent] = useState(false);
 
   const set = (field: keyof FormData) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm(prev => ({ ...prev, [field]: e.target.value }));
-
-  // ViaCEP autocomplete
-  const handleCepBlur = async () => {
-    const raw = form.cep.replace(/\D/g, '');
-    if (raw.length !== 8) return;
-
-    setCepLoading(true);
-    setCepError('');
-    try {
-      const res = await fetch(`https://viacep.com.br/ws/${raw}/json/`);
-      const data = await res.json();
-      if (data.erro) {
-        setCepError('CEP não encontrado.');
-      } else {
-        setForm(prev => ({
-          ...prev,
-          rua:    data.logradouro || prev.rua,
-          bairro: data.bairro     || prev.bairro,
-          cidade: data.localidade || prev.cidade,
-          uf:     data.uf         || prev.uf,
-        }));
-      }
-    } catch {
-      setCepError('Erro ao buscar CEP. Verifique sua conexão.');
-    } finally {
-      cepLoading && setCepLoading(false);
-    }
-  };
-
-  const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // format: 00000-000
-    const raw = e.target.value.replace(/\D/g, '').slice(0, 8);
-    const formatted = raw.length > 5 ? `${raw.slice(0, 5)}-${raw.slice(5)}` : raw;
-    setForm(prev => ({ ...prev, cep: formatted }));
-    setCepError('');
-  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -134,7 +86,7 @@ export function ContactFormSection() {
     setTimeout(() => setSent(false), 4000);
   };
 
-  const isValid = form.nome && form.telefone && form.produto && form.defeito;
+  const isValid = form.nome && form.telefone && form.cidade && form.bairro && form.numero && form.produto && form.defeito;
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -176,7 +128,7 @@ export function ContactFormSection() {
       </div>
 
       {/* Form */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="w-full px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,15 +139,12 @@ export function ContactFormSection() {
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
             {/* Informações Pessoais */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <Field label="Nome completo" icon="mdi:account">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <Field label="Nome" icon="mdi:account">
                 <input type="text" placeholder="Seu nome" value={form.nome} onChange={set('nome')} required className={inputCls} />
               </Field>
               <Field label="Telefone / WhatsApp" icon="mdi:phone">
-                <input type="tel" placeholder="(11) 99999-9999" value={form.telefone} onChange={set('telefone')} required className={inputCls} />
-              </Field>
-              <Field label="E-mail" icon="mdi:email">
-                <input type="email" placeholder="seu@email.com" value={form.email} onChange={set('email')} className={inputCls} />
+                <input type="tel" placeholder="(11) 98282-2443" value={form.telefone} onChange={set('telefone')} required className={inputCls} />
               </Field>
             </div>
 
@@ -207,58 +156,22 @@ export function ContactFormSection() {
               </p>
 
               <div className="grid grid-cols-12 gap-4 md:gap-5">
-                {/* CEP */}
-                <div className="col-span-12 md:col-span-3">
-                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">CEP</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      placeholder="00000-000"
-                      value={form.cep}
-                      onChange={handleCepChange}
-                      onBlur={handleCepBlur}
-                      maxLength={9}
-                      className={`${inputCls} pr-10`}
-                    />
-                    {cepLoading && (
-                      <Icon
-                        icon="mdi:loading"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 text-xl animate-spin"
-                      />
-                    )}
-                  </div>
-                  {cepError && <p className="text-xs text-red-400 mt-1">{cepError}</p>}
-                </div>
-
-                {/* Rua */}
-                <div className="col-span-8 md:col-span-7">
-                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Rua / Logradouro</label>
-                  <input type="text" placeholder="Rua das Flores" value={form.rua} onChange={set('rua')} className={inputCls} />
-                </div>
-
-                {/* Número */}
-                <div className="col-span-4 md:col-span-2">
-                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Número</label>
-                  <input type="text" placeholder="123" value={form.numero} onChange={set('numero')} className={inputCls} />
+                {/* Cidade */}
+                <div className="col-span-12 md:col-span-5">
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Cidade</label>
+                  <input type="text" placeholder="São Bernardo do Campo" value={form.cidade} onChange={set('cidade')} required className={inputCls} />
                 </div>
 
                 {/* Bairro */}
                 <div className="col-span-12 md:col-span-5">
                   <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Bairro</label>
-                  <input type="text" placeholder="Centro" value={form.bairro} onChange={set('bairro')} className={inputCls} />
+                  <input type="text" placeholder="Centro" value={form.bairro} onChange={set('bairro')} required className={inputCls} />
                 </div>
 
-                {/* Cidade */}
-                <div className="col-span-8 md:col-span-5">
-                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Cidade</label>
-                  <input type="text" placeholder="São Paulo" value={form.cidade} onChange={set('cidade')} className={inputCls} />
-                </div>
-
-                {/* UF */}
-                <div className="col-span-4 md:col-span-2">
-                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">UF</label>
-                  <input type="text" placeholder="SP" value={form.uf} onChange={set('uf')} maxLength={2} className={`${inputCls} uppercase`} />
+                {/* Número */}
+                <div className="col-span-12 md:col-span-2">
+                  <label className="text-sm font-semibold text-gray-200 mb-1.5 block">Número</label>
+                  <input type="text" placeholder="123" value={form.numero} onChange={set('numero')} required className={inputCls} />
                 </div>
               </div>
             </div>
@@ -305,7 +218,6 @@ export function ContactFormSection() {
 {`🔧 Solicitação de Atendimento – MachTec
 
 👤 Nome: ${form.nome}
-📧 E-mail: ${form.email || '—'}
 📱 Telefone: ${form.telefone || '—'}
 
 📍 Endereço: ${formatEndereco(form)}

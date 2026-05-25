@@ -39,10 +39,10 @@ export function BrandsSection() {
             {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
               <div
                 key={i}
-                className="flex items-center gap-6 group-hover:opacity-100 opacity-60 transition-opacity"
+                className="flex items-center gap-6 opacity-100 md:opacity-60 md:transition-opacity md:group-hover:opacity-100"
               >
                 <Icon icon="mdi:asterisk" className="text-primary/50 text-sm" />
-                <span className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 uppercase tracking-tight">
+                <span className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">
                   {brand}
                 </span>
               </div>
